@@ -101,5 +101,19 @@ document.addEventListener("DOMContentLoaded", (e) => {
     undraw();
     currentPosition += width;
     draw();
+    console.log(currentPosition);
+  }
+
+  // const grid = document.querySelector(".grid");
+  //184
+  //200 - 209
+
+  function freeze() {
+    if (
+      currentTetromino.some((index) =>
+        squares[currentPosition + index + width].classList.contains("taken")
+      )
+    ) {
+    }
   }
 });
