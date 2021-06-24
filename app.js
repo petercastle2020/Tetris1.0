@@ -76,37 +76,25 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   document.getElementById("start-button").addEventListener("click", KK);
 
-  //number of row until get to the bottom
-  // 1(5) 2(15) 3(25) 4(35) 5(45) 6(55) 7(65) 8(75) 9(85) 10(95) 11(105)
-  // 12(115) 13(125) 14(135) 15(145) 16(155) 17(165) 18(175)
-
   function KK() {}
-  // function PP() {
-  //   let myVarDraw = setInterval(() => {
-  //     if (currentPosition <= 175) {
-  //       undraw();
-  //       currentPosition = currentPosition + width;
-  //       draw();
-  //     } else {
-  //       clearInterval(myVarDraw);
-  //     }
-  //   }, 1000);
-  // }
 
-  // make the tetromino move down every second
-
+  // make the tetromino move down every second.
   let timerId = setInterval(moveDown, 1000);
+
+  //First Tretomino.
+  draw();
 
   function moveDown() {
     undraw();
     currentPosition += width;
     draw();
+    freeze();
     console.log(currentPosition);
   }
 
-  // const grid = document.querySelector(".grid");
-  //184
-  //200 - 209
+  // let currentTetromino = theTretrominoes[randomTetromino][currentRotation];
+  // index = [1, width + 1, width * 2 + 1, width * 3 + 1], // 1 / 11 / 21 / 31
+  // currentPosition = 5 // width = 10
 
   function freeze() {
     if (
@@ -114,6 +102,22 @@ document.addEventListener("DOMContentLoaded", (e) => {
         squares[currentPosition + index + width].classList.contains("taken")
       )
     ) {
+      currentTetromino.forEach((index) =>
+        squares[currentPosition + index].classList.add("taken")
+      );
+
+      // create new tetromino
+      randomTetromino = Math.floor(Math.random() * theTretrominoes.length);
+      currentTetromino = theTretrominoes[randomTetromino][currentRotation];
+      currentPosition = 4;
+      draw();
     }
   }
+
+  function moveLeft() {
+    undraw();
+    const isAtLeftEdge = 
+  }
+
+  
 });
