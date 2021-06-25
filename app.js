@@ -89,11 +89,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
     currentPosition += width;
     draw();
     freeze();
-    console.log(currentPosition);
   }
 
   // let currentTetromino = theTretrominoes[randomTetromino][currentRotation];
-  // index = [1, width + 1, width * 2 + 1, width * 3 + 1], // 1 / 11 / 21 / 31
+  // index = [1, width + 1, width * 2 + 1, width * 3 + 1], // 1 / 11 / 21 / 31 = 12 + 52 = 64
   // currentPosition = 5 // width = 10
 
   function freeze() {
@@ -116,8 +115,36 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   function moveLeft() {
     undraw();
-    const isAtLeftEdge = 
+    const isAtLeftEdge = currentTetromino.some(
+      (index) => (currentPosition + index) % width === 0
+    );
+
+    if (!isAtLeftEdge) {
+      currentPosition -= 1;
+    }
+
+    if (
+      currentTetromino.some((index) =>
+        squares[currentPosition + index].classList.contains("taken")
+      )
+    ) {
+      currentPosition += 1;
+    }
+
+    draw();
   }
 
-  
+  document.addEventListener("keydown", (e) => {
+    let key = e.key;
+    console.log(key);
+    switch (key) {
+      case "ArrowLeft":
+        moveLeft();
+        break;
+
+      default:
+        console.log("not left arrow");
+        break;
+    }
+  });
 });
