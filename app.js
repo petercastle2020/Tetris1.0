@@ -109,6 +109,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }
   }
 
+  function moveDownFaster() {
+    undraw();
+    currentPosition += width;
+    draw();
+    freeze();
+  }
+
   function moveLeft() {
     undraw();
     const isAtLeftEdge = currentTetromino.some(
@@ -153,7 +160,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   document.addEventListener("keydown", (e) => {
     let key = e.key;
-    console.log(key);
+
     switch (key) {
       case "ArrowRight":
         moveRight();
@@ -161,9 +168,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
       case "ArrowLeft":
         moveLeft();
         break;
-
+      case "ArrowDown":
+        moveDownFaster();
+        break;
       default:
-        console.log("Wrong Key!!!");
+        console.log(`the key is: ${key}`);
         break;
     }
   });
