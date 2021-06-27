@@ -91,6 +91,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
     freeze();
   }
 
+  function moveDownFaster() {
+    undraw();
+    currentPosition += width;
+    draw();
+    freeze();
+  }
+
   function freeze() {
     if (
       currentTetromino.some((index) =>
@@ -107,13 +114,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
       currentPosition = 4;
       draw();
     }
-  }
-
-  function moveDownFaster() {
-    undraw();
-    currentPosition += width;
-    draw();
-    freeze();
   }
 
   function moveLeft() {
@@ -158,8 +158,18 @@ document.addEventListener("DOMContentLoaded", (e) => {
     draw();
   }
 
+  function rotate() {
+    undraw();
+    currentRotation++;
+    if (currentRotation === currentTetromino.length) {
+      currentRotation = 0;
+    }
+    currentTetromino = theTretrominoes[randomTetromino][currentRotation];
+  }
+
   document.addEventListener("keydown", (e) => {
     let key = e.key;
+    console.log(key);
 
     switch (key) {
       case "ArrowRight":
@@ -170,6 +180,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
         break;
       case "ArrowDown":
         moveDownFaster();
+        break;
+      case " ":
+        rotate();
         break;
       default:
         console.log(`the key is: ${key}`);
