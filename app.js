@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   const width = 10;
 
+  let nextRandomTetromino = 0;
+
   // The Tetrominoes
   const lTetromino = [
     [1, width + 1, width * 2 + 1, 2], // 1 / 11 / 21 / 2
@@ -53,6 +55,36 @@ document.addEventListener("DOMContentLoaded", (e) => {
     iTetromino,
   ];
 
+  //Show up-next tetromino in mini-grid display
+  const displaySquares = Array.from(
+    document.querySelectorAll(".mini-grid div")
+  );
+  const displayWidth = 4;
+  let displayIndex = 0;
+
+  //the Tetrominos without rotations.
+  const upNextTetrominoes = [
+    [1, displayWidth + 1, displayWidth * 2 + 1, 2], //lTetromino
+    [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1], //zTetromino
+    [1, displayWidth, displayWidth + 1, displayWidth + 2], //tTetromino
+    [0, 1, displayWidth, displayWidth + 1], //oTetromino
+    [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1], //iTetromino
+  ];
+
+  // display the shape in the mini-grid display.
+  function displayShape() {
+    // remove any trace of a tretromino from the entire mini-grid
+    displaySquares.forEach((square) => {
+      square.classList.remove("tetromino");
+    });
+
+    upNextTetrominoes[nextRandomTetromino].forEach((index) => {
+      displaySquares[displayIndex + index].classList.add("tetromino");
+    });
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
   let currentPosition = 4;
   let currentRotation = 0;
 
@@ -82,6 +114,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   let timerId = setInterval(moveDown, 1000);
 
   //First Tretomino.
+  displayShape();
   draw();
 
   function moveDown() {
@@ -109,10 +142,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
       );
 
       // create new tetromino
-      randomTetromino = Math.floor(Math.random() * theTretrominoes.length);
+      randomTetromino = nextRandomTetromino;
+      nextRandomTetromino = Math.floor(Math.random() * theTretrominoes.length);
       currentTetromino = theTretrominoes[randomTetromino][currentRotation];
       currentPosition = 4;
       draw();
+      displayShape();
     }
   }
 
@@ -181,8 +216,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
       case "ArrowDown":
         moveDownFaster();
         break;
-      case " ":
+      case "ArrowUp":
         rotate();
+        break;
+      case " ":
+        console.log("space bar pressed.");
         break;
       default:
         console.log(`the key is: ${key}`);
