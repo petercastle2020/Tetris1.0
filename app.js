@@ -3,13 +3,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   let squares = Array.from(document.querySelectorAll(".grid div"));
 
-  const ScoreDisplay = document.querySelector("#score");
+  const scoreDisplay = document.querySelector("#score");
 
-  const StartBtn = document.querySelector("#start-button");
+  const startBtn = document.querySelector("#start-button");
 
   const width = 10;
 
   let nextRandomTetromino = 0;
+
+  let timerId;
 
   // The Tetrominoes
   const lTetromino = [
@@ -106,16 +108,18 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
   }
 
-  document.getElementById("start-button").addEventListener("click", KK);
-
-  function KK() {}
-
-  // make the tetromino move down every second.
-  let timerId = setInterval(moveDown, 1000);
-
-  //First Tretomino.
-  displayShape();
-  draw();
+  // Button related.
+  startBtn.addEventListener("click", () => {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    } else {
+      displayShape();
+      draw();
+      timerId = setInterval(moveDown, 1000);
+      nextRandomTetromino = Math.floor(Math.random() * theTretrominoes.length);
+    }
+  });
 
   function moveDown() {
     undraw();
