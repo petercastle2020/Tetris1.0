@@ -1,5 +1,6 @@
-document.addEventListener("DOMContentLoaded", (e) => {
+document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
+  const miniGrid = document.querySelector(".mini-grid");
 
   let squares = Array.from(document.querySelectorAll(".grid div"));
 
@@ -14,6 +15,26 @@ document.addEventListener("DOMContentLoaded", (e) => {
   let timerId;
 
   let score = 0;
+
+  //Structure building Divs
+  for (let i = 0; i < 200; i += 1) {
+    let divs = document.createElement("DIV");
+    grid.appendChild(divs);
+    console.log(divs);
+  }
+
+  for (let i = 0; i < 10; i += 1) {
+    let takenDivs = document.createElement("DIV");
+    takenDivs.classList.add("taken");
+    grid.appendChild(takenDivs);
+    console.log(takenDivs);
+  }
+
+  for (let i = 0; i < 16; i += 1) {
+    let miniGridDivs = document.createElement("DIV");
+    miniGrid.appendChild(miniGridDivs);
+    console.log(miniGridDivs);
+  }
 
   // The Tetrominoes
   const lTetromino = [
