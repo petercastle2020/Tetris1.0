@@ -2,20 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
   const miniGrid = document.querySelector(".mini-grid");
 
-  let squares = Array.from(document.querySelectorAll(".grid div"));
-
-  const scoreDisplay = document.querySelector("#score");
-
-  const startBtn = document.querySelector("#start-button");
-
-  const width = 10;
-
-  let nextRandomTetromino = 0;
-
-  let timerId;
-
-  let score = 0;
-
   //Structure building Divs
   for (let i = 0; i < 200; i += 1) {
     let divs = document.createElement("DIV");
@@ -35,6 +21,20 @@ document.addEventListener("DOMContentLoaded", () => {
     miniGrid.appendChild(miniGridDivs);
     console.log(miniGridDivs);
   }
+
+  let squares = Array.from(document.querySelectorAll(".grid div"));
+
+  const scoreDisplay = document.querySelector("#score");
+
+  const startBtn = document.querySelector("#start-button");
+
+  const width = 10;
+
+  let nextRandomTetromino = 0;
+
+  let timerId;
+
+  let score = 0;
 
   // The Tetrominoes
   const lTetromino = [
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     iTetromino,
   ];
 
-  const colors = ["blue", "gray", "red", "black", "brown"];
+  const colors = ["blue", "white", "red", "black", "brown"];
 
   //Show up-next tetromino in mini-grid display
   const displaySquares = Array.from(
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.forEach((index) => {
           squares[index].classList.remove("taken");
           squares[index].classList.remove("tetromino");
-          squqres[index].style.backgroundColor = "";
+          squares[index].style.backgroundColor = "";
         });
         const squaresRemoved = squares.splice(i, width);
 
