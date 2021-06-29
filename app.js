@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   let timerId;
 
+  let score = 0;
+
   // The Tetrominoes
   const lTetromino = [
     [1, width + 1, width * 2 + 1, 2], // 1 / 11 / 21 / 2
@@ -57,12 +59,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
     iTetromino,
   ];
 
+  const colors = ["blue", "gray", "red", "black", "brown"];
+
   //Show up-next tetromino in mini-grid display
   const displaySquares = Array.from(
     document.querySelectorAll(".mini-grid div")
   );
   const displayWidth = 4;
-  let displayIndex = 0;
+  const displayIndex = 0;
 
   //the Tetrominos without rotations.
   const upNextTetrominoes = [
@@ -78,14 +82,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
     // remove any trace of a tretromino from the entire mini-grid
     displaySquares.forEach((square) => {
       square.classList.remove("tetromino");
+      square.style.backgroundColor = "";
     });
 
     upNextTetrominoes[nextRandomTetromino].forEach((index) => {
       displaySquares[displayIndex + index].classList.add("tetromino");
+      displaySquares[displayIndex + index].style.backgroundColor =
+        colors[nextRandomTetromino];
     });
   }
-
-  ////////////////////////////////////////////////////////////////////////////////////////////
 
   let currentPosition = 4;
   let currentRotation = 0;
@@ -98,6 +103,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
   function draw() {
     currentTetromino.forEach((index) => {
       squares[currentPosition + index].classList.add("tetromino");
+      squares[currentPosition + index].style.backgroundColor =
+        colors[randomTetromino];
     });
   }
 
@@ -105,6 +112,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   function undraw() {
     currentTetromino.forEach((index) => {
       squares[currentPosition + index].classList.remove("tetromino");
+      squares[currentPosition + index].style.backgroundColor = "";
     });
   }
 
@@ -120,6 +128,18 @@ document.addEventListener("DOMContentLoaded", (e) => {
       nextRandomTetromino = Math.floor(Math.random() * theTretrominoes.length);
     }
   });
+
+  function spaceBarStartBtn() {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    } else {
+      displayShape();
+      draw();
+      timerId = setInterval(moveDown, 1000);
+      nextRandomTetromino = Math.floor(Math.random() * theTretrominoes.length);
+    }
+  }
 
   function moveDown() {
     undraw();
@@ -152,6 +172,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
       currentPosition = 4;
       draw();
       displayShape();
+      addScore();
+      gameOver();
     }
   }
 
@@ -206,9 +228,50 @@ document.addEventListener("DOMContentLoaded", (e) => {
     currentTetromino = theTretrominoes[randomTetromino][currentRotation];
   }
 
+  function addScore() {
+    for (let i = 0; i < 199; i += width) {
+      const row = [
+        i,
+        i + 1,
+        i + 2,
+        i + 3,
+        i + 4,
+        i + 5,
+        i + 6,
+        i + 7,
+        i + 8,
+        i + 9,
+      ];
+
+      if (row.every((index) => squares[index].classList.contains("taken"))) {
+        score += 10;
+        scoreDisplay.innerHTML = score;
+        row.forEach((index) => {
+          squares[index].classList.remove("taken");
+          squares[index].classList.remove("tetromino");
+          squqres[index].style.backgroundColor = "";
+        });
+        const squaresRemoved = squares.splice(i, width);
+
+        squares = squaresRemoved.concat(squares);
+        squares.forEach((cell) => grid.appendChild(cell));
+      }
+    }
+  }
+
+  function gameOver() {
+    if (
+      currentTetromino.some((index) =>
+        squares[currentPosition + index].classList.contains("taken")
+      )
+    ) {
+      scoreDisplay.innerHTML = "End";
+      clearInterval(timerId);
+    }
+  }
+
   document.addEventListener("keydown", (e) => {
     let key = e.key;
-    console.log(key);
 
     switch (key) {
       case "ArrowRight":
@@ -224,7 +287,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         rotate();
         break;
       case " ":
-        console.log("space bar pressed.");
+        spaceBarStartBtn();
         break;
       default:
         console.log(`the key is: ${key}`);
