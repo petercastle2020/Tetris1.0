@@ -6,20 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = 0; i < 200; i += 1) {
     let divs = document.createElement("DIV");
     grid.appendChild(divs);
-    console.log(divs);
   }
 
   for (let i = 0; i < 10; i += 1) {
     let takenDivs = document.createElement("DIV");
-    takenDivs.classList.add("taken");
+    takenDivs.classList.add("taken", "bottom");
     grid.appendChild(takenDivs);
-    console.log(takenDivs);
   }
 
   for (let i = 0; i < 16; i += 1) {
     let miniGridDivs = document.createElement("DIV");
     miniGrid.appendChild(miniGridDivs);
-    console.log(miniGridDivs);
   }
 
   let squares = Array.from(document.querySelectorAll(".grid div"));
@@ -286,7 +283,11 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[currentPosition + index].classList.contains("taken")
       )
     ) {
-      scoreDisplay.innerHTML = "End";
+      let h3 = document.createElement("h3");
+      h3.innerHTML = "Game Over!";
+      h3.classList.add("game-over");
+      document.querySelector(".game-over").appendChild(h3);
+      // scoreDisplay.innerHTML = "End";
       clearInterval(timerId);
     }
   }
