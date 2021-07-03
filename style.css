@@ -3,11 +3,32 @@ body {
   margin: 0;
 }
 h3 {
+  align-self: center;
+  color: #fff;
   font-family: "Press Start 2P", cursive;
 }
 
+/* offset-x | offset-y | blur-radius | color */
+
 #start-button {
-  margin-top: 20px;
+  background-color: cornflowerblue;
+  border: 4px solid rgb(101, 157, 247);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem rgb(59, 62, 69);
+  color: #fff;
+  cursor: pointer;
+  font-family: "Press Start 2P", cursive;
+  padding: 0.5rem;
+}
+
+#start-button:hover {
+  background-color: rgba(101, 157, 247, 0.5);
+}
+
+#start-button:active {
+  background-color: rgba(101, 157, 247, 0.5);
+  box-shadow: 0 0.25rem rgb(59, 62, 69);
+  transform: translateY(0.25rem);
 }
 
 .container {
@@ -55,8 +76,8 @@ h3 {
   border-radius: 3%;
   display: flex;
   flex-wrap: wrap;
+  align-self: center;
   height: 128px;
-  margin-left: 2%;
   width: 128px;
   /* width: 80px;
   height: 80px; */
