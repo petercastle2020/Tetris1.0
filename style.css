@@ -1,7 +1,6 @@
 body {
-  margin: 0;
-  /* background: rgb(55, 73, 117); */
   background: rgb(86, 110, 168);
+  margin: 0;
 }
 h3 {
   font-family: "Press Start 2P", cursive;
@@ -17,34 +16,31 @@ h3 {
   flex-direction: row;
 }
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  /* width: 200px;
-  height: 400px; */
-  height: 608px;
-  width: 308px;
-  background-color: rgb(66, 135, 245);
+.main-grid {
   box-sizing: border-box;
-  margin: 5% 0 0 20%;
+  background-color: rgb(66, 135, 245);
   border: 4px solid rgb(101, 157, 247);
   border-radius: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 608px;
+  justify-content: start;
+  margin: 5% 0 0 20%;
+  order: 1;
+  width: 308px;
 }
 
-.grid div {
+.main-grid div {
   /* height: 20px;
   width: 20px; */
-  height: 30px;
-  width: 30px;
+  box-sizing: border-box;
   border-radius: 11%;
   border: 1px solid rgb(101, 157, 247);
-  box-sizing: border-box;
   height: 30px;
   width: 30px;
 }
 
-.grid .bottom {
+.main-grid .bottom {
   border: none;
 }
 
@@ -53,37 +49,39 @@ h3 {
 }
 
 .mini-grid {
-  margin-left: 2%;
-  /* width: 80px;
-  height: 80px; */
-  width: 128px;
-  height: 128px;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: rgb(66, 135, 245);
   box-sizing: border-box;
+  background-color: rgb(66, 135, 245);
   border: 4px solid rgb(101, 157, 247);
   border-radius: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 128px;
+  margin-left: 2%;
+  width: 128px;
+  /* width: 80px;
+  height: 80px; */
 }
 
 .mini-grid div {
-  /* height: 20px;
-  width: 20px; */
-  height: 30px;
-  width: 30px;
   box-sizing: border-box;
   border: 1px solid rgb(101, 157, 247);
   border-radius: 11%;
+  height: 30px;
+  width: 30px;
+  /* height: 20px;
+  width: 20px; */
 }
 
 .control-panel {
+  align-self: start;
   display: flex;
   flex-wrap: wrap;
-  margin: 5% 0 0 10%;
   flex-direction: column;
-  align-self: flex-start;
+  justify-content: space-between;
+  margin: 5% 0 0 10%;
+  order: 2;
 }
 .game-over {
-  font-size: large;
   color: rgb(224, 24, 44);
+  font-size: large;
 }

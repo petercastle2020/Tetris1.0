@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.querySelector(".grid");
+  const mainGrid = document.querySelector(".main-grid");
   const miniGrid = document.querySelector(".mini-grid");
 
   //Structure building Divs
   for (let i = 0; i < 200; i += 1) {
     let divs = document.createElement("DIV");
-    grid.appendChild(divs);
+    mainGrid.appendChild(divs);
   }
 
   for (let i = 0; i < 10; i += 1) {
     let takenDivs = document.createElement("DIV");
     takenDivs.classList.add("taken", "bottom");
-    grid.appendChild(takenDivs);
+    mainGrid.appendChild(takenDivs);
   }
 
   for (let i = 0; i < 16; i += 1) {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     miniGrid.appendChild(miniGridDivs);
   }
 
-  let squares = Array.from(document.querySelectorAll(".grid div"));
+  let squares = Array.from(document.querySelectorAll(".main-grid div"));
 
   const scoreDisplay = document.querySelector("#score");
 
@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let timerId;
 
   let score = 0;
+
+  let gameIsOver = false;
 
   // The Tetrominoes
   const lTetromino = [
@@ -77,7 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
     iTetromino,
   ];
 
-  const colors = ["blue", "white", "red", "black", "brown"];
+  const colors = [
+    "rgb(151, 42, 173)",
+    "rgb(4, 79, 105)",
+    "rgb(32, 153, 52)",
+    "rgb(219, 206, 2)",
+    "rgb(237, 179, 52)",
+  ];
 
   //Show up-next tetromino in mini-grid display
   const displaySquares = Array.from(
@@ -272,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const squaresRemoved = squares.splice(i, width);
 
         squares = squaresRemoved.concat(squares);
-        squares.forEach((cell) => grid.appendChild(cell));
+        squares.forEach((cell) => mainGrid.appendChild(cell));
       }
     }
   }
@@ -283,37 +291,40 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[currentPosition + index].classList.contains("taken")
       )
     ) {
-      let h3 = document.createElement("h3");
-      h3.innerHTML = "Game Over!";
-      h3.classList.add("game-over");
-      document.querySelector(".game-over").appendChild(h3);
-      // scoreDisplay.innerHTML = "End";
+      let gameOverInfo = document.createElement("h3");
+      gameOverInfo.innerHTML = "Game Over!";
+      gameOverInfo.classList.add("game-over");
+      document.querySelector(".game-over").appendChild(gameOverInfo);
       clearInterval(timerId);
+      gameIsOver = true;
     }
   }
 
   document.addEventListener("keydown", (e) => {
     let key = e.key;
-
-    switch (key) {
-      case "ArrowRight":
-        moveRight();
-        break;
-      case "ArrowLeft":
-        moveLeft();
-        break;
-      case "ArrowDown":
-        moveDownFaster();
-        break;
-      case "ArrowUp":
-        rotate();
-        break;
-      case " ":
-        spaceBarStartBtn();
-        break;
-      default:
-        console.log(`the key is: ${key}`);
-        break;
+    if (gameIsOver === true) {
+      console.log("Game Over...");
+    } else {
+      switch (key) {
+        case "ArrowRight":
+          moveRight();
+          break;
+        case "ArrowLeft":
+          moveLeft();
+          break;
+        case "ArrowDown":
+          moveDownFaster();
+          break;
+        case "ArrowUp":
+          rotate();
+          break;
+        case " ":
+          spaceBarStartBtn();
+          break;
+        default:
+          console.log(`the key is: ${key}`);
+          break;
+      }
     }
   });
 });
