@@ -37,6 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // The Tetrominoes
   const lTetromino = [
+    [0, 1, 2, width],
+    [0, 1, width + 1, width * 2 + 1],
+    [2, width, width + 1, width + 2],
+    [1, width + 1, width * 2 + 1, width * 2 + 2],
+  ];
+
+  const jTetromino = [
     [1, width + 1, width * 2 + 1, 2], // 1 / 11 / 21 / 2
     [width, width + 1, width + 2, width * 2 + 2], // 10 / 11 / 12 / 22
     [1, width + 1, width * 2 + 1, width * 2], //1 / 11 / 21 / 20
@@ -80,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const theTretrominoes = [
     lTetromino,
+    jTetromino,
     sTetromino,
     zTetromino,
     tTetromino,
@@ -88,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const colors = [
+    "rgb(60, 201, 119)",
     "rgb(151, 42, 173)",
     "rgb(68, 75, 92)",
     "rgb(4, 79, 105)",
@@ -105,8 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //the Tetrominos without rotations.
   const upNextTetrominoes = [
-    [1, displayWidth + 1, displayWidth * 2 + 1, 2], //lTetromino
-    [1, 2, displayWidth + 1, displayWidth + 2], //sTetromino
+    [0, 1, 2, displayWidth + 2], //lTetromino
+    [1, displayWidth + 1, displayWidth * 2 + 1, 2], //jTetromino
+    [1, 2, displayWidth, displayWidth + 1], //sTetromino
     [0, 1, displayWidth + 1, displayWidth + 2], //zTetromino
     [1, displayWidth, displayWidth + 1, displayWidth + 2], //tTetromino
     [0, 1, displayWidth, displayWidth + 1], //oTetromino
