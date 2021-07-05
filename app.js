@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const startBtn = document.querySelector("#start-button");
 
+  const restartBtn = document.querySelector("#restart-button");
+
   const width = 10;
 
   let nextRandomTetromino = 0;
@@ -319,6 +321,15 @@ document.addEventListener("DOMContentLoaded", () => {
       gameIsOver = true;
     }
   }
+
+  function restartGame() {
+    // clear all div from classes "tetromino" and "taken".
+    // set Score to 0.
+    // add event listener to the button restart.
+    // create <h1> to hold the highest score reached.
+  }
+
+  restartBtn.addEventListener("click", (e) => console.log("I got clicked."));
 
   document.addEventListener("keydown", (e) => {
     let key = e.key;

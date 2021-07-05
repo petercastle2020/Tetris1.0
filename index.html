@@ -11,6 +11,10 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Tetris</title>
   </head>
@@ -21,7 +25,11 @@
         <div class="mini-grid"></div>
         <div class="game-over"></div>
         <h3>Score:<span id="score">0</span></h3>
+
         <button id="start-button">Start / Pause</button>
+        <button id="restart-button">
+          <i class="fas fa-redo fa-2x restart-icon"></i>
+        </button>
       </div>
     </div>
     <script src="app.js"></script>
