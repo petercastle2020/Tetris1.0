@@ -323,13 +323,45 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function restartGame() {
+    if (document.querySelector(".game-over")) {
+      document.querySelector(".game-over").remove();
+    }
+    scoreDisplay.innerHTML = 0;
+    currentPosition = 4;
+
+    for (let i = 0; i < 200; i += 1) {
+      if (
+        squares[i].classList.contains("tetromino") &&
+        squares[i].classList.contains("taken")
+      ) {
+        squares[i].classList.remove("tetromino", "taken");
+        squares[i].style.backgroundColor = "";
+      } else if (squares[i].classList.contains("tetromino")) {
+        console.log("contem tetromino");
+        squares[i].classList.remove("tetromino");
+        squares[i].style.backgroundColor = "";
+      } else if (squares[i].classList.contains("taken")) {
+        console.log("contem taken");
+        squares[i].classList.remove("taken");
+        squares[i].style.backgroundColor = "";
+      } else {
+        console.log("do not have a class!");
+      }
+    }
+
+    clearInterval(timerId);
+    displayShape();
+    draw();
+    timerId = setInterval(moveDown, 1000);
+    nextRandomTetromino = Math.floor(Math.random() * theTretrominoes.length);
     // clear all div from classes "tetromino" and "taken".
     // set Score to 0.
     // add event listener to the button restart.
     // create <h1> to hold the highest score reached.
+    console.log("called.");
   }
 
-  restartBtn.addEventListener("click", (e) => console.log("I got clicked."));
+  restartBtn.addEventListener("click", (e) => restartGame());
 
   document.addEventListener("keydown", (e) => {
     let key = e.key;
