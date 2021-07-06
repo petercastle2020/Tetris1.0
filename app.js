@@ -316,18 +316,26 @@ document.addEventListener("DOMContentLoaded", () => {
       let gameOverInfo = document.createElement("h3");
       gameOverInfo.innerHTML = "Game Over!";
       gameOverInfo.classList.add("game-over");
-      document.querySelector(".game-over").appendChild(gameOverInfo);
+      ////////////////////////////////////////////////
+      let gameOverDiv = document.createElement("DIV");
+      gameOverDiv.classList.add("over");
+      gameOverDiv.appendChild(gameOverInfo);
+      document.querySelector(".game-over").appendChild(gameOverDiv);
+      //////////////////////////////////////////////
       clearInterval(timerId);
       gameIsOver = true;
+      // create div .game-over then appendChild.
+      // minigrid
     }
   }
 
   function restartGame() {
-    if (document.querySelector(".game-over")) {
-      document.querySelector(".game-over").remove();
+    if (document.querySelector(".over")) {
+      document.querySelector(".over").remove();
     }
     scoreDisplay.innerHTML = 0;
     currentPosition = 4;
+    gameIsOver = false;
 
     for (let i = 0; i < 200; i += 1) {
       if (
