@@ -1,6 +1,9 @@
 body {
   background: rgb(86, 110, 168);
+  background-image: url("/styles/Images/tetris2.jpg");
+  background-repeat: repeat;
   margin: 0;
+  overflow: hidden;
 }
 h3 {
   align-self: center;
