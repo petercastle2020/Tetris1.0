@@ -98,13 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const colors = [
-    "rgb(60, 201, 119)",
-    "rgb(151, 42, 173)",
-    "rgb(68, 75, 92)",
-    "rgb(4, 79, 105)",
-    "rgb(32, 153, 52)",
-    "rgb(219, 206, 2)",
-    "rgb(237, 179, 52)",
+    "rgb(253, 119, 4)",
+    "rgb(0, 56, 179)",
+    "rgb(87, 194, 2)",
+    "rgb(217, 32, 46)",
+    "rgb(179, 19, 192)",
+    "rgb(243, 167, 0)",
+    "rgb(107, 247, 245)",
   ];
 
   //Show up-next tetromino in mini-grid display
