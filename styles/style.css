@@ -1,7 +1,14 @@
 body {
-  background: rgb(86, 110, 168);
-  background-image: url("/styles/Images/tetris2.jpg");
-  background-repeat: repeat;
+  /* background: rgb(86, 110, 168); */
+  /* background-image: url("/styles/Images/tetris2.jpg");
+  background-repeat: no-repeat; */
+  background-image: linear-gradient(
+    to right,
+    rgb(58, 55, 55),
+    rgb(103, 50, 187),
+    rgb(96, 13, 230),
+    rgba(74, 8, 180, 0.692)
+  );
   margin: 0;
   overflow: hidden;
 }
@@ -67,6 +74,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  min-width: 830px;
 }
 
 .main-grid {
@@ -84,8 +92,6 @@ h3 {
 }
 
 .main-grid div {
-  /* height: 20px;
-  width: 20px; */
   box-sizing: border-box;
   border-radius: 11%;
   border: 1px solid rgb(101, 157, 247);
@@ -129,13 +135,58 @@ h3 {
   align-self: start;
   display: flex;
   flex-wrap: wrap;
+
   flex-direction: column;
+
   justify-content: space-between;
-  margin: 5% 0 0 10%;
+  margin: 5% 0 0 8%;
   order: 2;
 }
 .game-over {
   color: rgb(224, 24, 44);
   font-size: large;
   align-self: center;
+}
+
+.control-keys {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  order: 2;
+  margin-top: 50%;
+}
+
+.control-keys div {
+  margin-top: 0.5rem;
+}
+
+.control-keys div button {
+  margin: 0 0.1rem 0 0.1rem;
+}
+
+.key {
+  width: 70px;
+  height: 70px;
+}
+
+#key {
+  background-color: rgb(101, 157, 247);
+  border: 2px solid rgb(59, 62, 69);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.3rem rgb(59, 62, 69);
+  color: #fff;
+  cursor: pointer;
+  font-family: "Press Start 2P", cursive;
+  padding: 0.5rem;
+  outline: none;
+}
+
+#key:hover {
+  background-color: rgba(101, 157, 247, 0.5);
+}
+
+#key:active {
+  background-color: rgba(101, 157, 247, 0.5);
+  box-shadow: 0 0.25rem rgb(59, 62, 69);
+  transform: translateY(0.2rem);
 }
