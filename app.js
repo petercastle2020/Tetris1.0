@@ -139,12 +139,16 @@ document.addEventListener("DOMContentLoaded", () => {
     displaySquares.forEach((square) => {
       square.classList.remove("tetromino");
       square.style.backgroundColor = "";
+      square.classList.remove("tetromino-inset-shadow");
     });
 
     upNextTetrominoes[nextRandomTetromino].forEach((index) => {
       displaySquares[displayIndex + index].classList.add("tetromino");
       displaySquares[displayIndex + index].style.backgroundColor =
         colors[nextRandomTetromino];
+      displaySquares[displayIndex + index].classList.add(
+        "tetromino-inset-shadow"
+      );
     });
   }
 
@@ -161,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
       squares[currentPosition + index].classList.add("tetromino");
       squares[currentPosition + index].style.backgroundColor =
         colors[randomTetromino];
+      squares[currentPosition + index].classList.add("tetromino-inset-shadow");
     });
   }
 
@@ -169,6 +174,9 @@ document.addEventListener("DOMContentLoaded", () => {
     currentTetromino.forEach((index) => {
       squares[currentPosition + index].classList.remove("tetromino");
       squares[currentPosition + index].style.backgroundColor = "";
+      squares[currentPosition + index].classList.remove(
+        "tetromino-inset-shadow"
+      );
     });
   }
 
