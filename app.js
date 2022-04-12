@@ -27,6 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const restartBtn = document.querySelector("#restart-button");
 
+  const arrowUpBtn = document.querySelector("#arrow-up");
+
+  const arrowLeftBtn = document.querySelector("#arrow-left");
+
+  const arrowDownBtn = document.querySelector("#arrow-down");
+
+  const arrowRightBtn = document.querySelector("#arrow-right");
+
   const width = 10;
 
   let nextRandomTetromino = 0;
@@ -371,26 +379,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
   restartBtn.addEventListener("click", (e) => restartGame());
 
+  arrowUpBtn.addEventListener("click", (e) => rotate());
+
+  arrowLeftBtn.addEventListener("click", (e) => moveLeft());
+
+  arrowDownBtn.addEventListener("click", (e) => moveDownFaster());
+
+  arrowRightBtn.addEventListener("click", (e) => moveRight());
+
+  const keyAnimation = (key) => {
+    if (key === "ArrowRight") {
+      document.getElementById("arrow-right").classList.add("active-button");
+
+      setTimeout(() => {
+        document
+          .getElementById("arrow-right")
+          .classList.remove("active-button");
+      }, 250);
+    } else if (key === "ArrowLeft") {
+      document.getElementById("arrow-left").classList.add("active-button");
+
+      setTimeout(() => {
+        document.getElementById("arrow-left").classList.remove("active-button");
+      }, 250);
+    } else if (key === "ArrowDown") {
+      document.getElementById("arrow-down").classList.add("active-button");
+
+      setTimeout(() => {
+        document.getElementById("arrow-down").classList.remove("active-button");
+      }, 250);
+    } else if (key === "ArrowUp") {
+      document.getElementById("arrow-up").classList.add("active-button");
+
+      setTimeout(() => {
+        document.getElementById("arrow-up").classList.remove("active-button");
+      }, 250);
+    } else if (key === " ") {
+      document.getElementById("start-button").classList.add("active-button");
+
+      setTimeout(() => {
+        document
+          .getElementById("start-button")
+          .classList.remove("active-button");
+      }, 250);
+    } else {
+      return;
+    }
+  };
+
   document.addEventListener("keydown", (e) => {
     let key = e.key;
+    console.log(key);
+    console.log(e);
     if (gameIsOver === true) {
       console.log("Game Over...");
     } else {
       switch (key) {
         case "ArrowRight":
           moveRight();
+          keyAnimation(key);
           break;
         case "ArrowLeft":
           moveLeft();
+          keyAnimation(key);
           break;
         case "ArrowDown":
           moveDownFaster();
+          keyAnimation(key);
           break;
         case "ArrowUp":
           rotate();
+          keyAnimation(key);
           break;
         case " ":
           spaceBarStartBtn();
+          keyAnimation(key);
           break;
         default:
           console.log(`the key is: ${key}`);

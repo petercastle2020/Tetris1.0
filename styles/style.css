@@ -165,11 +165,6 @@ h3 {
 }
 
 .key {
-  width: 70px;
-  height: 70px;
-}
-
-#key {
   background-color: rgb(101, 157, 247);
   border: 2px solid rgb(59, 62, 69);
   border-radius: 0.3rem;
@@ -179,14 +174,22 @@ h3 {
   font-family: "Press Start 2P", cursive;
   padding: 0.5rem;
   outline: none;
+  width: 70px;
+  height: 70px;
 }
 
-#key:hover {
+.key:hover {
   background-color: rgba(101, 157, 247, 0.5);
 }
 
-#key:active {
+.key:active {
   background-color: rgba(101, 157, 247, 0.5);
+  box-shadow: 0 0.25rem rgb(59, 62, 69);
+  transform: translateY(0.2rem);
+}
+
+.active-button {
+  background-color: rgba(101, 157, 247, 0.5) !important;
   box-shadow: 0 0.25rem rgb(59, 62, 69);
   transform: translateY(0.2rem);
 }
