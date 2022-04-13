@@ -95,7 +95,7 @@ h3 {
   box-sizing: border-box;
   background-color: rgb(66, 135, 245);
   border: 4px solid rgb(101, 157, 247);
-  border-radius: 1%;
+  border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
   height: 608px;
@@ -107,7 +107,7 @@ h3 {
 
 .main-grid div {
   box-sizing: border-box;
-  border-radius: 11%;
+  border-radius: 5px;
   border: 1px solid rgb(101, 157, 247);
   height: 30px;
   width: 30px;

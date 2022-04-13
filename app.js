@@ -314,6 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
           squares[index].classList.remove("taken");
           squares[index].classList.remove("tetromino");
           squares[index].style.backgroundColor = "";
+          squares[index].classList.remove("tetromino-inset-shadow");
         });
         const squaresRemoved = squares.splice(i, width);
 
@@ -360,14 +361,15 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         squares[i].classList.remove("tetromino", "taken");
         squares[i].style.backgroundColor = "";
+        squares[i].classList.remove("tetromino-inset-shadow");
       } else if (squares[i].classList.contains("tetromino")) {
-        console.log("contem tetromino");
         squares[i].classList.remove("tetromino");
         squares[i].style.backgroundColor = "";
+        squares[i].classList.remove("tetromino-inset-shadow");
       } else if (squares[i].classList.contains("taken")) {
-        console.log("contem taken");
         squares[i].classList.remove("taken");
         squares[i].style.backgroundColor = "";
+        squares[i].classList.remove("tetromino-inset-shadow");
       } else {
         console.log("do not have a class!");
       }
