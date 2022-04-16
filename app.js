@@ -182,14 +182,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Button related.
   startBtn.addEventListener("click", () => {
-    if (timerId) {
-      clearInterval(timerId);
-      timerId = null;
+    if (gameIsOver === true) {
+      return;
     } else {
-      displayShape();
-      draw();
-      timerId = setInterval(moveDown, 1000);
-      nextRandomTetromino = Math.floor(Math.random() * theTretrominoes.length);
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+      } else {
+        displayShape();
+        draw();
+        timerId = setInterval(moveDown, 1000);
+        nextRandomTetromino = Math.floor(
+          Math.random() * theTretrominoes.length
+        );
+      }
     }
   });
 
@@ -389,13 +395,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   restartBtn.addEventListener("click", (e) => restartGame());
 
-  arrowUpBtn.addEventListener("click", (e) => rotate());
+  arrowUpBtn.addEventListener("click", (e) => {
+    if (gameIsOver === true) {
+      return;
+    } else {
+      rotate();
+    }
+  });
 
-  arrowLeftBtn.addEventListener("click", (e) => moveLeft());
+  arrowLeftBtn.addEventListener("click", (e) => {
+    if (gameIsOver === true) {
+      return;
+    } else {
+      moveLeft();
+    }
+  });
 
-  arrowDownBtn.addEventListener("click", (e) => moveDownFaster());
+  arrowDownBtn.addEventListener("click", (e) => {
+    if (gameIsOver === true) {
+      return;
+    } else {
+      moveDownFaster();
+    }
+  });
 
-  arrowRightBtn.addEventListener("click", (e) => moveRight());
+  arrowRightBtn.addEventListener("click", (e) => {
+    if (gameIsOver === true) {
+      return;
+    } else {
+      moveRight();
+    }
+  });
 
   const keyAnimation = (key) => {
     if (key === "ArrowRight") {

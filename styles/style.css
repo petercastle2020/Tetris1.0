@@ -2,13 +2,7 @@ body {
   /* background: rgb(86, 110, 168); */
   /* background-image: url("/styles/Images/tetris2.jpg");
   background-repeat: no-repeat; */
-  background-image: linear-gradient(
-    to right,
-    rgb(58, 55, 55),
-    rgb(103, 50, 187),
-    rgb(96, 13, 230),
-    rgba(74, 8, 180, 0.692)
-  );
+  background-image: linear-gradient(to right, rgb(31, 28, 28), rgb(77, 76, 76), rgb(31, 28, 28));
   margin: 0;
   overflow: hidden;
 }
@@ -30,10 +24,10 @@ h3 {
 /* offset-x | offset-y | blur-radius | color */
 
 #start-button {
-  background-color: cornflowerblue;
-  border: 4px solid rgb(101, 157, 247);
-  border-radius: 0.5rem;
-  box-shadow: 0 0.5rem rgb(59, 62, 69);
+  background-color: rgb(31, 28, 28);
+  border: 4px solid rgb(77, 76, 76);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.3rem rgb(59, 62, 69);
   color: #fff;
   cursor: pointer;
   font-family: "Press Start 2P", cursive;
@@ -42,20 +36,22 @@ h3 {
 }
 
 #start-button:hover {
-  background-color: rgba(101, 157, 247, 0.5);
+  background-color: rgb(77, 76, 76);
+  border: 4px solid rgb(31, 28, 28);
+  box-shadow: 0 0.3rem rgb(31, 28, 28);
 }
 
 #start-button:active {
-  background-color: rgba(101, 157, 247, 0.5);
-  box-shadow: 0 0.25rem rgb(59, 62, 69);
+  background-color: rgb(77, 76, 76);
+  box-shadow: 0 0.3rem rgb(31, 28, 28);
   transform: translateY(0.25rem);
 }
 
 #restart-button {
   align-self: center;
   border-radius: 50%;
-  background-color: cornflowerblue;
-  border: 4px solid rgb(101, 157, 247);
+  background-color: rgb(31, 28, 28);
+  border: 4px solid rgb(77, 76, 76);
   box-shadow: 0 0.4rem rgb(59, 62, 69);
   cursor: pointer;
   margin-top: 1.5rem;
@@ -64,12 +60,14 @@ h3 {
 }
 
 #restart-button:hover {
-  background-color: rgba(101, 157, 247, 0.5);
+  background-color: rgb(77, 76, 76);
+  border: 4px solid rgb(31, 28, 28);
+  box-shadow: 0 0.3rem rgb(31, 28, 28);
 }
 
 #restart-button:active {
-  background-color: rgba(101, 157, 247, 0.5);
-  box-shadow: 0 0.1rem rgb(59, 62, 69);
+  background-color: rgb(77, 76, 76);
+  box-shadow: 0 0.1rem rgb(31, 28, 28);
   transform: translateY(0.1rem);
 }
 
@@ -87,20 +85,24 @@ h3 {
   max-width: 90vmax;
   margin: 50px 50px 50px 50px;
   padding: 50px 50px 50px 50px;
-  border: 4px solid rgb(101, 157, 247);
-  border-radius: 2px;
+  border: 4px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, rgb(77, 76, 76), rgb(31, 28, 28), rgb(77, 76, 76));
+
+  /* border-radius: 2px; */
 }
 
 .main-grid {
   box-sizing: border-box;
-  background-color: rgb(66, 135, 245);
-  border: 4px solid rgb(101, 157, 247);
+  background-color: rgb(31, 28, 28);
+  border: 4px solid rgb(77, 76, 76);
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
   height: 608px;
   justify-content: start;
   margin: 5% 0 0 5%;
+  padding: 1px;
   order: 1;
   width: 308px;
 }
@@ -108,7 +110,7 @@ h3 {
 .main-grid div {
   box-sizing: border-box;
   border-radius: 5px;
-  border: 1px solid rgb(101, 157, 247);
+  border: 1px solid rgb(77, 76, 76);
   height: 30px;
   width: 30px;
   flex-basis: 10%;
@@ -129,24 +131,26 @@ h3 {
 
 .mini-grid {
   box-sizing: border-box;
-  background-color: rgb(66, 135, 245);
-  border: 4px solid rgb(101, 157, 247);
+  background-color: rgb(31, 28, 28);
+  border: 4px solid rgb(77, 76, 76);
   border-radius: 3%;
   display: flex;
   flex-wrap: wrap;
   align-self: center;
   height: 128px;
   width: 128px;
+  padding: 1px;
   /* width: 80px;
   height: 80px; */
 }
 
 .mini-grid div {
   box-sizing: border-box;
-  border: 1px solid rgb(101, 157, 247);
+  border: 1px solid rgb(77, 76, 76);
   border-radius: 11%;
   height: 30px;
   width: 30px;
+  flex-basis: 25%;
   /* height: 20px;
   width: 20px; */
 }
@@ -188,8 +192,9 @@ h3 {
 }
 
 .key {
-  background-color: rgb(101, 157, 247);
-  border: 2px solid rgb(59, 62, 69);
+  background-color: rgb(31, 28, 28);
+  /* border: 2px solid rgb(59, 62, 69); */
+  border: 2px solid rgb(77, 76, 76);
   border-radius: 0.3rem;
   box-shadow: 0 0.3rem rgb(59, 62, 69);
   color: #fff;
@@ -202,17 +207,26 @@ h3 {
 }
 
 .key:hover {
-  background-color: rgba(101, 157, 247, 0.5);
+  background-color: rgb(77, 76, 76);
+  border: 2px solid rgb(31, 28, 28);
+  box-shadow: 0 0.25rem rgb(31, 28, 28);
 }
 
 .key:active {
-  background-color: rgba(101, 157, 247, 0.5);
+  background-color: rgb(77, 76, 76);
   box-shadow: 0 0.25rem rgb(59, 62, 69);
   transform: translateY(0.2rem);
 }
 
 .active-button {
-  background-color: rgba(101, 157, 247, 0.5) !important;
+  background-color: rgb(77, 76, 76) !important;
   box-shadow: 0 0.25rem rgb(59, 62, 69);
+  border: 2px solid rgb(31, 28, 28);
   transform: translateY(0.2rem);
 }
+
+
+
+rgb(77, 76, 76)  bright black
+
+rgb(31, 28, 28) 
