@@ -54,45 +54,45 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const jTetromino = [
-    [1, width + 1, width * 2 + 1, 2], // 1 / 11 / 21 / 2
-    [width, width + 1, width + 2, width * 2 + 2], // 10 / 11 / 12 / 22
-    [1, width + 1, width * 2 + 1, width * 2], //1 / 11 / 21 / 20
-    [width, width * 2, width * 2 + 1, width * 2 + 2], // 10 / 20 / 21 / 22
+    [1, width + 1, width * 2 + 1, 2],
+    [width, width + 1, width + 2, width * 2 + 2],
+    [1, width + 1, width * 2 + 1, width * 2],
+    [width, width * 2, width * 2 + 1, width * 2 + 2],
   ];
 
   const zTetromino = [
-    [0, 1, width + 1, width + 2], // 0 / 1 / 11 /12
-    [1, width, width + 1, width * 2], // 1 / 10 / 11 / 20
+    [0, 1, width + 1, width + 2],
+    [1, width, width + 1, width * 2],
     [0, 1, width + 1, width + 2],
     [1, width, width + 1, width * 2],
   ];
 
   const sTetromino = [
-    [0, width, width + 1, width * 2 + 1], // 0 / 10 / 11 // 21
-    [width + 1, width + 2, width * 2, width * 2 + 1], // 11 / 12 / 20 // 21
-    [0, width, width + 1, width * 2 + 1], // 0 / 10 / 11 // 21
-    [width + 1, width + 2, width * 2, width * 2 + 1], // 11 / 12 / 20 // 21
+    [0, width, width + 1, width * 2 + 1],
+    [width + 1, width + 2, width * 2, width * 2 + 1],
+    [0, width, width + 1, width * 2 + 1],
+    [width + 1, width + 2, width * 2, width * 2 + 1],
   ];
 
   const tTetromino = [
-    [1, width, width + 1, width + 2], // 1 / 10 / 11 / 12
-    [1, width + 1, width + 2, width * 2 + 1], // 1 / 11 / 12 / 21
-    [width, width + 1, width + 2, width * 2 + 1], // 10 / 11 / 12 / 21
-    [1, width, width + 1, width * 2 + 1], // 1 / 10 / 11 / 21
+    [1, width, width + 1, width + 2],
+    [1, width + 1, width + 2, width * 2 + 1],
+    [width, width + 1, width + 2, width * 2 + 1],
+    [1, width, width + 1, width * 2 + 1],
   ];
 
   const oTetromino = [
-    [0, 1, width, width + 1], // 0 / 1 / 10 / 11
-    [0, 1, width, width + 1], // 0 / 1 / 10 / 11
-    [0, 1, width, width + 1], // 0 / 1 / 10 / 11
-    [0, 1, width, width + 1], // 0 / 1 / 10 / 11
+    [0, 1, width, width + 1],
+    [0, 1, width, width + 1],
+    [0, 1, width, width + 1],
+    [0, 1, width, width + 1],
   ];
 
   const iTetromino = [
-    [1, width + 1, width * 2 + 1, width * 3 + 1], // 1 / 11 / 21 / 31
-    [width, width + 1, width + 2, width + 3], // 10 / 11 / 12 / 13
-    [1, width + 1, width * 2 + 1, width * 3 + 1], // 1 / 11 / 21 / 31
-    [width, width + 1, width + 2, width + 3], // 10 / 11 / 12 / 13
+    [1, width + 1, width * 2 + 1, width * 3 + 1],
+    [width, width + 1, width + 2, width + 3],
+    [1, width + 1, width * 2 + 1, width * 3 + 1],
+    [width, width + 1, width + 2, width + 3],
   ];
 
   const theTretrominoes = [
@@ -323,7 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
           squares[index].classList.remove("tetromino-inset-shadow");
         });
         const squaresRemoved = squares.splice(i, width);
-
         squares = squaresRemoved.concat(squares);
         squares.forEach((cell) => mainGrid.appendChild(cell));
       }
@@ -339,16 +338,14 @@ document.addEventListener("DOMContentLoaded", () => {
       let gameOverInfo = document.createElement("h3");
       gameOverInfo.innerHTML = "Game Over!";
       gameOverInfo.classList.add("game-over");
-      ////////////////////////////////////////////////
+
       let gameOverDiv = document.createElement("DIV");
       gameOverDiv.classList.add("over");
       gameOverDiv.appendChild(gameOverInfo);
       document.querySelector(".game-over").appendChild(gameOverDiv);
-      //////////////////////////////////////////////
+
       clearInterval(timerId);
       gameIsOver = true;
-      // create div .game-over then appendChild.
-      // minigrid
     }
   }
 
@@ -386,11 +383,6 @@ document.addEventListener("DOMContentLoaded", () => {
     draw();
     timerId = setInterval(moveDown, 1000);
     nextRandomTetromino = Math.floor(Math.random() * theTretrominoes.length);
-    // clear all div from classes "tetromino" and "taken".
-    // set Score to 0.
-    // add event listener to the button restart.
-    // create <h1> to hold the highest score reached.
-    console.log("called.");
   }
 
   restartBtn.addEventListener("click", (e) => restartGame());
@@ -469,8 +461,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("keydown", (e) => {
     let key = e.key;
-    console.log(key);
-    console.log(e);
     if (gameIsOver === true) {
       console.log("Game Over...");
     } else {
